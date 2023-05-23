@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    .text-white{
+        color:white
+    }
+</style>
+<body style="background-color:rgb(68, 40, 0)">
+
+    <nav class="navbar" style="background-color:#f07909">
+        <a class="navbar-brand" style="color:#ffffff"  >Book Recommendation System</a>
+        <ul class="nav navbar-nav navbar-right"style="margin-right: 150px;">
+            <li><a style="color:#ffffff" href="/">Home</a></li>
+            <li><a style="color:#ffffff" href="/recommend">Recommend</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" >
+                <div class="col-md-15" style="background-color:#f07909">
+                    <h1 class="text-white text-center" style="font-size:36px" >Recommend Books</h1>
+                </div>
+              
+                <form action="/recommend_books" method="post">
+                    <input name="user_input" type="text" class="form-control"><br>
+                    <input type="submit" class="btn btn-lg btn-secondary">
+                </form>
+            </div>
+
+            {% if data %}
+
+             {% for i in data %}
+                <div class="col-md-3" style="margin-top:50px">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{i[2]}}">
+                            <h2 class="text-white">{{i[0]}}</h2>
+                            <p class="text-white">{{i[1]}}</p>
+                        </div>
+                    </div>
+                </div>
+             {% endfor %}
+
+            {% endif %}
+
+
+
+
+        </div>
+    </div>
+
+</body>
+</html>
